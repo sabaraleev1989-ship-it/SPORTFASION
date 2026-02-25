@@ -11,8 +11,7 @@
             margin: 0; 
             font-family: 'Arial Black', sans-serif; 
             color: var(--white);
-            /* Спортивный фон */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
                         url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
@@ -23,161 +22,139 @@
         .logo { font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
         .logo span { color: var(--red); }
 
-        /* Полоса брендов без Speedo */
-        .brands { 
-            background: var(--red); 
-            color: white; 
-            padding: 12px; 
-            display: flex; 
-            justify-content: space-around; /* Распределяет названия равномерно */
-            font-style: italic; 
-            font-size: 16px; 
-            text-transform: uppercase;
-            font-weight: bold;
+        .brands { background: var(--red); color: white; padding: 12px; display: flex; justify-content: space-around; font-style: italic; font-size: 16px; text-transform: uppercase; font-weight: bold; }
+
+        .container { padding: 40px 20px; text-align: center; }
+        
+        /* СЕТКА ТОВАРОВ (КРОССОВКИ) */
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 25px; 
+            max-width: 1100px; 
+            margin: 30px auto; 
         }
 
-        .container { padding: 60px 20px; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
-        
-        .box { 
-            background: rgba(0, 0, 0, 0.8); 
-            color: #fff; 
-            padding: 50px 10px; 
-            text-transform: uppercase; 
-            font-weight: bold; 
-            cursor: pointer; 
-            border: 1px solid var(--red);
-            transition: 0.4s;
-        }
-        .box:hover { background: var(--red); transform: scale(1.05); }
-
-        /* СЕКЦИЯ ОБРАТНОЙ СВЯЗИ */
-        .contact-section { 
-            background: rgba(0, 0, 0, 0.9); 
-            padding: 40px 20px; 
-            margin-top: 50px; 
-            border-top: 4px solid var(--red); 
-        }
-        
-        .input-group { margin-bottom: 15px; }
-        input { 
-            width: 90%; 
-            max-width: 400px; 
+        .product-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid #333; 
             padding: 15px; 
-            background: #222; 
-            border: 1px solid #444; 
-            color: white; 
-            border-radius: 5px; 
-            font-size: 16px;
+            transition: 0.3s;
+            text-align: left;
         }
-        
-        .btn { 
+        .product-card:hover { border-color: var(--red); transform: translateY(-5px); }
+
+        .product-card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; /* Фото будет красиво вписываться */
+            background: #fff; /* Белый фон для кроссовок всегда смотрится лучше */
+        }
+
+        .product-info { padding: 15px 0; }
+        .product-title { font-size: 18px; text-transform: uppercase; margin: 0; }
+        .product-price { color: var(--red); font-size: 20px; margin: 10px 0; }
+
+        .buy-btn { 
             background: var(--red); 
             color: white; 
             border: none; 
-            padding: 18px 40px; 
+            padding: 10px; 
+            width: 100%; 
             font-weight: bold; 
             cursor: pointer; 
-            font-size: 16px; 
             text-transform: uppercase;
-            border-radius: 5px;
         }
-        .btn:hover { background: #b3161b; }
 
-        .direct-link { 
-            margin-top: 25px; 
-            display: inline-block; 
-            color: #fff; 
-            text-decoration: none; 
-            font-size: 16px; 
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid var(--red);
-        }
-        .direct-link b { color: var(--red); }
-
-        #status { margin-top: 15px; font-weight: bold; }
+        /* КОНТАКТЫ */
+        .contact-section { background: rgba(0, 0, 0, 0.9); padding: 50px 20px; border-top: 4px solid var(--red); text-align: center; }
+        input { width: 90%; max-width: 400px; padding: 15px; background: #222; border: 1px solid #444; color: white; margin-bottom: 10px; border-radius: 5px; }
+        .btn-send { background: var(--red); color: white; border: none; padding: 18px 40px; font-weight: bold; cursor: pointer; text-transform: uppercase; border-radius: 5px; }
+        
+        .direct-link { display: inline-block; margin-top: 25px; color: #fff; text-decoration: none; background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--red); }
     </style>
 </head>
 <body>
 
     <header><div class="logo">SPORT <span>&</span> FASHION</div></header>
-    
-    <div class="brands">
-        <span>PUMA</span> 
-        <span>ANTA</span> 
-        <span>PUMA</span> 
-        <span>ANTA</span>
-    </div>
+    <div class="brands"><span>PUMA</span><span>ANTA</span><span>PUMA</span><span>ANTA</span></div>
 
     <div class="container">
-        <h2 style="letter-spacing: 5px;">КАТАЛОГ ТОВАРОВ</h2>
-        <div class="grid">
-            <div class="box">Кроссовки</div>
-            <div class="box">Костюмы</div>
-            <div class="box">Футболки</div>
-            <div class="box">Аксессуары</div>
+        <h2 style="letter-spacing: 5px; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 10px;">КРОССОВКИ</h2>
+        
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500&auto=format&fit=crop" alt="Puma RS-X">
+                <div class="product-info">
+                    <p class="product-title">Puma RS-X Red Nitro</p>
+                    <p class="product-price">12 900 ₽</p>
+                    <button class="buy-btn" onclick="orderProduct('Puma RS-X Red Nitro')">Заказать</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=500&auto=format&fit=crop" alt="Anta Shock">
+                <div class="product-info">
+                    <p class="product-title">Anta Shock The Game</p>
+                    <p class="product-price">9 500 ₽</p>
+                    <button class="buy-btn" onclick="orderProduct('Anta Shock The Game')">Заказать</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=500&auto=format&fit=crop" alt="Puma Suede">
+                <div class="product-info">
+                    <p class="product-title">Puma Classic Suede Black</p>
+                    <p class="product-price">8 200 ₽</p>
+                    <button class="buy-btn" onclick="orderProduct('Puma Classic Suede Black')">Заказать</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="contact-section" id="order">
-        <h2 style="color:var(--red)">ЕСТЬ ВОПРОСЫ?</h2>
-        <p>Оставьте свои данные, и мы свяжемся с вами:</p>
+    <div class="contact-section" id="order-form">
+        <h2 style="color:var(--red)">ОФОРМИТЬ ЗАКАЗ</h2>
+        <p>Напишите модель и размер, мы свяжемся с вами:</p>
         
-        <div class="input-group">
-            <input type="text" id="userContact" placeholder="Ваш номер или ник в Telegram" required>
-        </div>
-        <div class="input-group">
-            <input type="text" id="userMsg" placeholder="Какая модель вас интересует?">
-        </div>
+        <input type="text" id="userContact" placeholder="Ваш номер или ник в Telegram" required><br>
+        <input type="text" id="userMsg" placeholder="Модель и размер"><br>
         
-        <button class="btn" onclick="sendToManager()">ОТПРАВИТЬ ЗАПРОС</button>
-        
+        <button class="btn-send" onclick="sendToManager()">ОТПРАВИТЬ В TELEGRAM</button>
         <div id="status"></div>
 
         <a href="https://t.me/SportFashion_Admin_bot" target="_blank" class="direct-link">
-            Перейти в наш чат-бот: <b>@SportFashion_Admin_bot</b>
+            Чат с ботом: <b>@SportFashion_Admin_bot</b>
         </a>
     </div>
 
     <script>
+        // Функция, которая подставляет название товара в поле ввода
+        function orderProduct(name) {
+            document.getElementById('userMsg').value = "Хочу заказать: " + name;
+            document.getElementById('order-form').scrollIntoView({behavior: 'smooth'}); // Плавный скролл к форме
+        }
+
         function sendToManager() {
             const contact = document.getElementById('userContact').value;
             const message = document.getElementById('userMsg').value;
             const status = document.getElementById('status');
 
-            if(!contact) { 
-                alert("Пожалуйста, оставьте контакт для связи!"); 
-                return; 
-            }
-
-            status.innerText = "⏳ Отправка...";
-            status.style.color = "white";
+            if(!contact) { alert("Оставьте контакт!"); return; }
 
             const T = "8342704083:AAEVz_T5MnAjskXUybYkDAb4zYK4cbiZ4aU";
             const C = "772852915";
+            const fullText = `🛍 НОВЫЙ ЗАКАЗ!\n\n👤 Клиент: ${contact}\n👟 Товар: ${message}`;
             
-            const fullText = `🔥 НОВЫЙ ЗАПРОС С САЙТА!\n\n👤 Контакт: ${contact}\n📝 Сообщение: ${message}`;
-            
-            const url = `https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(fullText)}`;
-
-            fetch(url).then(res => {
+            fetch(`https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(fullText)}`)
+            .then(res => {
                 if(res.ok) {
-                    status.innerText = "✅ ЗАЯВКА ПРИНЯТА!";
+                    status.innerText = "✅ ЗАКАЗ ОТПРАВЛЕН!";
                     status.style.color = "#00ff00";
-                    document.getElementById('userContact').value = "";
-                    document.getElementById('userMsg').value = "";
-                } else {
-                    status.innerText = "❌ Ошибка. Проверьте бота.";
-                    status.style.color = "var(--red)";
                 }
-            }).catch(() => {
-                status.innerText = "❌ Ошибка сети.";
-                status.style.color = "var(--red)";
             });
         }
     </script>
 </body>
 </html>
-
