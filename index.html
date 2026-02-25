@@ -11,7 +11,7 @@
             margin: 0; 
             font-family: 'Arial Black', sans-serif; 
             color: var(--white);
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
                         url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
@@ -19,123 +19,112 @@
         }
 
         header { background: var(--black); padding: 20px; text-align: center; border-bottom: 4px solid var(--red); }
-        .logo { font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        .logo { font-size: 28px; text-transform: uppercase; cursor: pointer; }
         .logo span { color: var(--red); }
 
-        .brands { background: var(--red); color: white; padding: 12px; display: flex; justify-content: space-around; font-style: italic; font-size: 16px; text-transform: uppercase; font-weight: bold; }
+        .brands { background: var(--red); color: white; padding: 12px; display: flex; justify-content: space-around; font-style: italic; font-size: 16px; text-transform: uppercase; }
 
-        .container { padding: 40px 20px; text-align: center; }
+        .container { padding: 40px 20px; text-align: center; min-height: 60vh; }
         
-        /* СЕТКА ТОВАРОВ (КРОССОВКИ) */
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 25px; 
-            max-width: 1100px; 
-            margin: 30px auto; 
-        }
+        /* ГЛАВНАЯ СЕТКА КАТЕГОРИЙ */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .category-box { background: rgba(0, 0, 0, 0.8); color: #fff; padding: 50px 10px; text-transform: uppercase; cursor: pointer; border: 1px solid var(--red); transition: 0.4s; }
+        .category-box:hover { background: var(--red); transform: scale(1.05); }
 
-        .product-card { 
-            background: rgba(255, 255, 255, 0.05); 
-            border: 1px solid #333; 
-            padding: 15px; 
-            transition: 0.3s;
-            text-align: left;
-        }
-        .product-card:hover { border-color: var(--red); transform: translateY(-5px); }
+        /* ВИТРИНА ТОВАРОВ (СКРЫТА ПО УМОЛЧАНИЮ) */
+        #catalog-view { display: none; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1100px; margin: 30px auto; }
+        .product-card { background: rgba(255, 255, 255, 0.05); border: 1px solid #333; padding: 15px; text-align: left; position: relative; }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; background: #fff; border-radius: 5px; }
+        .product-title { font-size: 18px; margin: 15px 0 5px; text-transform: uppercase; }
+        .product-price { color: var(--red); font-size: 20px; margin-bottom: 15px; }
+        .buy-btn { background: var(--red); color: white; border: none; padding: 12px; width: 100%; font-weight: bold; cursor: pointer; text-transform: uppercase; }
 
-        .product-card img { 
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; /* Фото будет красиво вписываться */
-            background: #fff; /* Белый фон для кроссовок всегда смотрится лучше */
-        }
+        .back-btn { background: #333; color: white; border: none; padding: 10px 20px; margin-bottom: 30px; cursor: pointer; text-transform: uppercase; font-size: 12px; }
 
-        .product-info { padding: 15px 0; }
-        .product-title { font-size: 18px; text-transform: uppercase; margin: 0; }
-        .product-price { color: var(--red); font-size: 20px; margin: 10px 0; }
-
-        .buy-btn { 
-            background: var(--red); 
-            color: white; 
-            border: none; 
-            padding: 10px; 
-            width: 100%; 
-            font-weight: bold; 
-            cursor: pointer; 
-            text-transform: uppercase;
-        }
-
-        /* КОНТАКТЫ */
+        /* ФОРМА ЗАКАЗА */
         .contact-section { background: rgba(0, 0, 0, 0.9); padding: 50px 20px; border-top: 4px solid var(--red); text-align: center; }
         input { width: 90%; max-width: 400px; padding: 15px; background: #222; border: 1px solid #444; color: white; margin-bottom: 10px; border-radius: 5px; }
         .btn-send { background: var(--red); color: white; border: none; padding: 18px 40px; font-weight: bold; cursor: pointer; text-transform: uppercase; border-radius: 5px; }
-        
-        .direct-link { display: inline-block; margin-top: 25px; color: #fff; text-decoration: none; background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--red); }
     </style>
 </head>
 <body>
 
-    <header><div class="logo">SPORT <span>&</span> FASHION</div></header>
+    <header onclick="showHome()"><div class="logo">SPORT <span>&</span> FASHION</div></header>
     <div class="brands"><span>PUMA</span><span>ANTA</span><span>PUMA</span><span>ANTA</span></div>
 
     <div class="container">
-        <h2 style="letter-spacing: 5px; border-bottom: 2px solid var(--red); display: inline-block; padding-bottom: 10px;">КРОССОВКИ</h2>
         
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500&auto=format&fit=crop" alt="Puma RS-X">
-                <div class="product-info">
-                    <p class="product-title">Puma RS-X Red Nitro</p>
-                    <p class="product-price">12 900 ₽</p>
-                    <button class="buy-btn" onclick="orderProduct('Puma RS-X Red Nitro')">Заказать</button>
-                </div>
+        <div id="home-view">
+            <h2 style="letter-spacing: 5px; margin-bottom: 40px;">ВЫБЕРИТЕ КАТЕГОРИЮ</h2>
+            <div class="grid">
+                <div class="category-box" onclick="showCatalog('Кроссовки')">Кроссовки</div>
+                <div class="category-box">Костюмы</div>
+                <div class="category-box">Футболки</div>
+                <div class="category-box">Аксессуары</div>
             </div>
+        </div>
 
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=500&auto=format&fit=crop" alt="Anta Shock">
-                <div class="product-info">
-                    <p class="product-title">Anta Shock The Game</p>
-                    <p class="product-price">9 500 ₽</p>
+        <div id="catalog-view">
+            <button class="back-btn" onclick="showHome()">← Назад к категориям</button>
+            <h2 id="catalog-title" style="letter-spacing: 5px; color: var(--red);">КРОССОВКИ</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Puma">
+                    <div class="product-title">Puma RS-X Nitro</div>
+                    <div class="product-price">12 900 ₽</div>
+                    <button class="buy-btn" onclick="orderProduct('Puma RS-X Nitro')">Заказать</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500" alt="Anta">
+                    <div class="product-title">Anta Shock The Game</div>
+                    <div class="product-price">9 500 ₽</div>
                     <button class="buy-btn" onclick="orderProduct('Anta Shock The Game')">Заказать</button>
                 </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=500&auto=format&fit=crop" alt="Puma Suede">
-                <div class="product-info">
-                    <p class="product-title">Puma Classic Suede Black</p>
-                    <p class="product-price">8 200 ₽</p>
-                    <button class="buy-btn" onclick="orderProduct('Puma Classic Suede Black')">Заказать</button>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500" alt="Puma Suede">
+                    <div class="product-title">Puma Classic Suede</div>
+                    <div class="product-price">8 200 ₽</div>
+                    <button class="buy-btn" onclick="orderProduct('Puma Classic Suede')">Заказать</button>
                 </div>
             </div>
-
         </div>
+
     </div>
 
     <div class="contact-section" id="order-form">
         <h2 style="color:var(--red)">ОФОРМИТЬ ЗАКАЗ</h2>
-        <p>Напишите модель и размер, мы свяжемся с вами:</p>
-        
-        <input type="text" id="userContact" placeholder="Ваш номер или ник в Telegram" required><br>
+        <input type="text" id="userContact" placeholder="Ваш телефон или @ник в Telegram"><br>
         <input type="text" id="userMsg" placeholder="Модель и размер"><br>
-        
-        <button class="btn-send" onclick="sendToManager()">ОТПРАВИТЬ В TELEGRAM</button>
+        <button class="btn-send" onclick="sendToManager()">ОТПРАВИТЬ ЗАПРОС</button>
         <div id="status"></div>
-
-        <a href="https://t.me/SportFashion_Admin_bot" target="_blank" class="direct-link">
-            Чат с ботом: <b>@SportFashion_Admin_bot</b>
-        </a>
+        <p style="margin-top:20px; font-size:12px;">Бот для связи: @SportFashion_Admin_bot</p>
     </div>
 
     <script>
-        // Функция, которая подставляет название товара в поле ввода
-        function orderProduct(name) {
-            document.getElementById('userMsg').value = "Хочу заказать: " + name;
-            document.getElementById('order-form').scrollIntoView({behavior: 'smooth'}); // Плавный скролл к форме
+        // Функция переключения на каталог
+        function showCatalog(category) {
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('catalog-view').style.display = 'block';
+            document.getElementById('catalog-title').innerText = category;
+            window.scrollTo(0, 0);
         }
 
+        // Функция возврата на главную
+        function showHome() {
+            document.getElementById('catalog-view').style.display = 'none';
+            document.getElementById('home-view').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        // Заполнение формы при выборе товара
+        function orderProduct(name) {
+            document.getElementById('userMsg').value = "Заказ: " + name;
+            document.getElementById('order-form').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Отправка в Telegram
         function sendToManager() {
             const contact = document.getElementById('userContact').value;
             const message = document.getElementById('userMsg').value;
@@ -152,6 +141,8 @@
                 if(res.ok) {
                     status.innerText = "✅ ЗАКАЗ ОТПРАВЛЕН!";
                     status.style.color = "#00ff00";
+                    document.getElementById('userContact').value = "";
+                    document.getElementById('userMsg').value = "";
                 }
             });
         }
