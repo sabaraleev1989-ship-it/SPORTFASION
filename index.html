@@ -34,14 +34,14 @@
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1100px; margin: 30px auto; }
         .product-card { background: rgba(255, 255, 255, 0.05); border: 1px solid #333; padding: 15px; text-align: left; transition: 0.3s; }
         .product-card:hover { border-color: var(--red); }
-        .product-card img { width: 100%; height: 250px; object-fit: cover; background: #fff; border-radius: 5px; }
+        .product-card img { width: 100%; height: 250px; object-fit: contain; background: #fff; border-radius: 5px; }
+        
         .product-title { font-size: 18px; margin: 15px 0 5px; text-transform: uppercase; }
 
-        /* СТИЛИ ЦЕНЫ */
         .product-price { margin-bottom: 15px; display: flex; align-items: baseline; gap: 10px; }
-        .old-price { text-decoration: line-through; color: #888; font-size: 16px; }
-        .new-price { color: var(--red); font-size: 22px; font-weight: bold; }
-        .normal-price { color: var(--white); font-size: 22px; font-weight: bold; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 14px; }
+        .new-price { color: var(--red); font-size: 20px; font-weight: bold; }
+        .normal-price { color: var(--white); font-size: 20px; font-weight: bold; }
 
         .buy-btn { background: var(--red); color: white; border: none; padding: 12px; width: 100%; font-weight: bold; cursor: pointer; text-transform: uppercase; }
         .back-btn { background: #333; color: white; border: none; padding: 10px 20px; margin-bottom: 30px; cursor: pointer; text-transform: uppercase; font-size: 12px; border-radius: 5px; }
@@ -74,40 +74,30 @@
             <div class="products-grid">
                 
                 <div class="product-card">
-                    <img src="1.jpg" alt="Товар 1">
+                    <img src="1.png" alt="Товар 1">
                     <div class="product-title">Puma Pro-Series Grey</div>
-                    <div class="product-price">
-                        <span class="old-price">9 990 ₽</span>
-                        <span class="new-price">6 990 ₽</span>
-                    </div>
+                    <div class="product-price"><span class="old-price">9 990 ₽</span><span class="new-price">6 990 ₽</span></div>
                     <button class="buy-btn" onclick="orderProduct('Puma Pro-Series Grey (6990 ₽)')">Заказать</button>
                 </div>
 
                 <div class="product-card">
-                    <img src="2.jpg" alt="Товар 2">
+                    <img src="2.png" alt="Товар 2">
                     <div class="product-title">Puma Suede Mauve</div>
-                    <div class="product-price">
-                        <span class="normal-price">9 490 ₽</span>
-                    </div>
+                    <div class="product-price"><span class="normal-price">9 490 ₽</span></div>
                     <button class="buy-btn" onclick="orderProduct('Puma Suede Mauve (9490 ₽)')">Заказать</button>
                 </div>
 
                 <div class="product-card">
-                    <img src="3.jpg" alt="Товар 3">
+                    <img src="3.png" alt="Товар 3">
                     <div class="product-title">Puma Smash Platform</div>
-                    <div class="product-price">
-                        <span class="normal-price">8 990 ₽</span>
-                    </div>
+                    <div class="product-price"><span class="normal-price">8 990 ₽</span></div>
                     <button class="buy-btn" onclick="orderProduct('Puma Smash Platform (8990 ₽)')">Заказать</button>
                 </div>
 
                 <div class="product-card">
-                    <img src="4.jpg" alt="Товар 4">
+                    <img src="4.png" alt="Товар 4">
                     <div class="product-title">Puma Mayze Leopard</div>
-                    <div class="product-price">
-                        <span class="old-price">9 190 ₽</span>
-                        <span class="new-price">7 350 ₽</span>
-                    </div>
+                    <div class="product-price"><span class="old-price">9 190 ₽</span><span class="new-price">7 350 ₽</span></div>
                     <button class="buy-btn" onclick="orderProduct('Puma Mayze Leopard (7350 ₽)')">Заказать</button>
                 </div>
 
@@ -157,11 +147,10 @@
                 if(res.ok) {
                     status.innerText = "✅ ЗАКАЗ ПРИНЯТ!";
                     status.style.color = "#00ff00";
-                    document.getElementById('userContact').value = "";
-                    document.getElementById('userMsg').value = "";
                 }
             });
         }
     </script>
 </body>
 </html>
+
