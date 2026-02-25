@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPORT & FASHION | Магазин</title>
+    <style>
+        :root { --red: #E31E24; --black: #000000; --white: #FFFFFF; }
+        body { margin: 0; font-family: 'Arial Black', sans-serif; background: var(--white); color: var(--black); }
+        
+        /* Шапка и Бренды */
+        header { background: var(--black); padding: 20px; text-align: center; border-bottom: 4px solid var(--red); }
+        .logo { color: white; font-size: 28px; text-transform: uppercase; }
+        .brands { background: var(--red); color: white; padding: 10px; display: flex; justify-content: center; gap: 20px; font-style: italic; font-size: 14px; }
+
+        /* Каталог */
+        .container { padding: 40px 20px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; max-width: 800px; margin: 0 auto; }
+        .box { background: #000; color: #fff; padding: 40px 10px; text-transform: uppercase; font-weight: bold; cursor: pointer; border: 1px solid #333; }
+        .box:hover { background: var(--red); }
+
+        /* Чат */
+        .chat-section { background: #121212; color: white; padding: 40px 20px; margin-top: 50px; border-top: 5px solid var(--red); }
+        input { width: 90%; max-width: 400px; padding: 15px; margin: 10px 0; border: none; border-radius: 5px; font-size: 16px; }
+        .btn { background: var(--red); color: white; border: none; padding: 15px 40px; font-weight: bold; cursor: pointer; font-size: 18px; text-transform: uppercase; }
+        #status { margin-top: 15px; font-size: 14px; font-family: sans-serif; }
+    </style>
+</head>
+<body>
+
+    <header><div class="logo">SPORT & FASHION</div></header>
+    <div class="brands"><span>PUMA</span> <span>ANTA</span> <span>SPEEDO</span></div>
+
+    <div class="container">
+        <h2>КАТЕГОРИИ</h2>
+        <div class="grid">
+            <div class="box">Верх</div>
+            <div class="box" style="background:var(--red)">Обувь</div>
+            <div class="box">Низ</div>
+            <div class="box">Аксессуары</div>
+        </div>
+    </div>
+
+    <div class="chat-section">
+        <h3>ЕСТЬ ВОПРОСЫ? ПИШИТЕ:</h3>
+        <input type="text" id="userMsg" placeholder="Ваш вопрос или телефон...">
+        <br>
+        <button class="btn" onclick="sendNow()">ОТПРАВИТЬ МЕНЕДЖЕРУ</button>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        function sendNow() {
+            const msg = document.getElementById('userMsg').value;
+            const status = document.getElementById('status');
+            
+            if(!msg) { alert("Введите сообщение!"); return; }
+
+            status.innerText = "⏳ Отправка...";
+            status.style.color = "white";
+
+            const T = "8342704083:AAEVz_T5MnAjskXUybYkDAb4zYK4cbiZ4aU";
+            const C = "772852915";
+            const url = `https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent("🛒 ЗАКАЗ: " + msg)}`;
+
+            fetch(url)
+            .then(res => {
+                if(res.ok) {
+                    status.innerText = "✅ СООБЩЕНИЕ ДОСТАВЛЕНО В TELEGRAM!";
+                    status.style.color = "#00ff00";
+                    document.getElementById('userMsg').value = "";
+                } else {
+                    status.innerText = "❌ ОШИБКА: Проверьте, запущен ли бот!";
+                    status.style.color = "var(--red)";
+                }
+            })
+            .catch(() => {
+                status.innerText = "❌ ОШИБКА СЕТИ";
+                status.style.color = "var(--red)";
+            });
+        }
+    </script>
+</body>
+</html>
