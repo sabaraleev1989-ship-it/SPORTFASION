@@ -1,36 +1,37 @@
-// Это твоя база данных. Каждый блок в фигурных скобках { ... } — это один товар.
 const products = [
     {
         id: 1,
         category: "Кроссовки",
         title: "Puma Pro-Series Grey",
         newPrice: "6 990",
-        oldPrice: "9 990",
-        image: "1.png"
+        image: "1.png" // Файл должен лежать на GitHub
     },
     {
         id: 2,
         category: "Футболки",
-        title: "Футболка Puma мужская (черная)",
+        title: "Футболка Мужская Nike Black",
         newPrice: "2 500",
-        oldPrice: null, // Если скидки нет, пишем null
-        image: "tshirt_black.png"
+        image: "nike_tee.png"
     },
     {
         id: 3,
-        category: "Рюкзаки",
-        title: "Рюкзак Puma спортивный",
-        newPrice: "4 200",
-        oldPrice: null,
-        image: "bag.png"
+        category: "Штаны",
+        title: "Брюки Спортивные Adidas",
+        newPrice: "4.800",
+        image: "pants.png"
     },
     {
         id: 4,
+        category: "Рюкзаки",
+        title: "Рюкзак Puma Городской",
+        newPrice: "5 200",
+        image: "bag.png"
+    },
+    {
+        id: 5,
         category: "Шапки",
-        title: "Шапка бини Puma Pink",
-        newPrice: "1 500",
-        oldPrice: "1 990",
-        image: "hat_pink.png"
+        title: "Шапка теплая вязаная",
+        newPrice: "1 200",
+        image: "hat.png"
     }
-    // Чтобы добавить новый товар, просто скопируй блок выше, поставь запятую и вставь его ниже.
 ];
