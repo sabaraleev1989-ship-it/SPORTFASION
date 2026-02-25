@@ -11,7 +11,7 @@
             margin: 0; 
             font-family: 'Arial Black', sans-serif; 
             color: var(--white);
-            /* Спортивный фон (Puma/Anta style) */
+            /* Спортивный фон */
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                         url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover;
@@ -23,7 +23,18 @@
         .logo { font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
         .logo span { color: var(--red); }
 
-        .brands { background: var(--red); color: white; padding: 10px; display: flex; justify-content: center; gap: 30px; font-style: italic; font-size: 14px; text-transform: uppercase; }
+        /* Полоса брендов без Speedo */
+        .brands { 
+            background: var(--red); 
+            color: white; 
+            padding: 12px; 
+            display: flex; 
+            justify-content: space-around; /* Распределяет названия равномерно */
+            font-style: italic; 
+            font-size: 16px; 
+            text-transform: uppercase;
+            font-weight: bold;
+        }
 
         .container { padding: 60px 20px; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
@@ -73,7 +84,17 @@
         }
         .btn:hover { background: #b3161b; }
 
-        .direct-link { margin-top: 20px; display: block; color: #aaa; text-decoration: none; font-size: 14px; }
+        .direct-link { 
+            margin-top: 25px; 
+            display: inline-block; 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 16px; 
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--red);
+        }
         .direct-link b { color: var(--red); }
 
         #status { margin-top: 15px; font-weight: bold; }
@@ -82,10 +103,16 @@
 <body>
 
     <header><div class="logo">SPORT <span>&</span> FASHION</div></header>
-    <div class="brands"><span>PUMA</span> <span>ANTA</span> <span>SPEEDO</span></div>
+    
+    <div class="brands">
+        <span>PUMA</span> 
+        <span>ANTA</span> 
+        <span>PUMA</span> 
+        <span>ANTA</span>
+    </div>
 
     <div class="container">
-        <h2 style="letter-spacing: 5px;">НОВАЯ КОЛЛЕКЦИЯ</h2>
+        <h2 style="letter-spacing: 5px;">КАТАЛОГ ТОВАРОВ</h2>
         <div class="grid">
             <div class="box">Кроссовки</div>
             <div class="box">Костюмы</div>
@@ -95,22 +122,22 @@
     </div>
 
     <div class="contact-section" id="order">
-        <h2 style="color:var(--red)">ОСТАВИТЬ ЗАЯВКУ</h2>
-        <p>Мы перезвоним вам или напишем в Telegram</p>
+        <h2 style="color:var(--red)">ЕСТЬ ВОПРОСЫ?</h2>
+        <p>Оставьте свои данные, и мы свяжемся с вами:</p>
         
         <div class="input-group">
-            <input type="text" id="userContact" placeholder="Ваш номер или @ник в Telegram" required>
+            <input type="text" id="userContact" placeholder="Ваш номер или ник в Telegram" required>
         </div>
         <div class="input-group">
-            <input type="text" id="userMsg" placeholder="Что вас интересует? (модель, размер)">
+            <input type="text" id="userMsg" placeholder="Какая модель вас интересует?">
         </div>
         
         <button class="btn" onclick="sendToManager()">ОТПРАВИТЬ ЗАПРОС</button>
         
         <div id="status"></div>
 
-        <a href="https://t.me/ТВОЙ_ЛОГИН" target="_blank" class="direct-link">
-            Или напишите нам напрямую: <b>@SportFashion_Admin_bot</b>
+        <a href="https://t.me/SportFashion_Admin_bot" target="_blank" class="direct-link">
+            Перейти в наш чат-бот: <b>@SportFashion_Admin_bot</b>
         </a>
     </div>
 
@@ -131,14 +158,13 @@
             const T = "8342704083:AAEVz_T5MnAjskXUybYkDAb4zYK4cbiZ4aU";
             const C = "772852915";
             
-            // Собираем текст сообщения для тебя
-            const fullText = `🔥 НОВЫЙ ЗАКАЗ!\n\n👤 Контакт: ${contact}\n📝 Вопрос: ${message}`;
+            const fullText = `🔥 НОВЫЙ ЗАПРОС С САЙТА!\n\n👤 Контакт: ${contact}\n📝 Сообщение: ${message}`;
             
             const url = `https://api.telegram.org/bot${T}/sendMessage?chat_id=${C}&text=${encodeURIComponent(fullText)}`;
 
             fetch(url).then(res => {
                 if(res.ok) {
-                    status.innerText = "✅ ЗАЯВКА ПРИНЯТА! МЕНЕДЖЕР СКОРО НАПИШЕТ ВАМ.";
+                    status.innerText = "✅ ЗАЯВКА ПРИНЯТА!";
                     status.style.color = "#00ff00";
                     document.getElementById('userContact').value = "";
                     document.getElementById('userMsg').value = "";
@@ -154,3 +180,4 @@
     </script>
 </body>
 </html>
+
